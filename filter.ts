@@ -6,14 +6,12 @@ export type User = {
     age: number;
 };
 
-export const filteredObjects = <T>(items: T[], criteria: Partial<T>, logQuery?: string): T[] => {
-    if (logQuery) {
-        const conditions = Object.entries(criteria)
-            .map(([key, value]) => `"${key}" = "${value}"`)
-            .join(" AND ");
-        console.log(`Filter : WHERE ${conditions}`);
-    }
+export const filteredObjects = <T>(items: T[], criteria: Partial<T>): T[] => {
 
+    const conditions = Object.entries(criteria)
+        .map(([key, value]) => `"${key}" = "${value}"`)
+        .join(" AND ");
+    console.log(`Filter : WHERE ${conditions}`);
     return items.filter((item) =>
         Object.entries(criteria).every(([key, value]) => item[key as keyof T] === value)
     );

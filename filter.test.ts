@@ -24,7 +24,7 @@ describe("Filters with criteria", () => {
 
     test("Filter data from RAM by name", () => {
         const criteria = { name: "John Doe" };
-        const result = filteredObjects(usersInRAM, criteria, 'WHERE "name" = "John Doe"');
+        const result = filteredObjects(usersInRAM, criteria);
 
         console.log("Filtered by name (John Doe):", result);
 
@@ -36,7 +36,7 @@ describe("Filters with criteria", () => {
         const usersFromJSON = await getDataFromJSON<User>(filePath);
 
         const criteria = { age: 25 };
-        const result = filteredObjects(usersFromJSON, criteria, 'WHERE "age" = 25');
+        const result = filteredObjects(usersFromJSON, criteria);
 
         console.log("Filtered by age (25):", result);
 
@@ -48,7 +48,7 @@ describe("Filters with criteria", () => {
 
     test("Filter data with combined criteria", () => {
         const criteria = { name: "John Smith", age: 25 };
-        const result = filteredObjects(usersInRAM, criteria, 'WHERE "name" = "John Smith" AND "age" = 25');
+        const result = filteredObjects(usersInRAM, criteria);
 
         console.log("Filtered by combined criteria (name: John Smith, age: 25):", result);
 
